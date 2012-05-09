@@ -5,24 +5,66 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpclient", "tcpclient\tcpc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpclient_sample", "tcpclient_sample\tcpclient_sample.csproj", "{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sslsocket", "sslsocket\sslsocket.csproj", "{9C0B779B-1D86-4DB5-906D-AF48C21380F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bouncycastle", "..\lib\bouncycastle\bouncycastle.csproj", "{673BD9E8-F0C3-4F45-96C2-259D896A02A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bouncy Castle", "Bouncy Castle", "{382D10EE-BC2F-4C79-A153-DB7F4388EF43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{9FDEC90D-6497-4B3B-A4F1-7286886AB54A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "securetcpclient_sample", "securetcpclient_sample\securetcpclient_sample.csproj", "{C3F2C235-687F-42F2-9995-098B51DEFD7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		FREE|Any CPU = FREE|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AAC20884-D836-40C1-BB4D-E5D4189218DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AAC20884-D836-40C1-BB4D-E5D4189218DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC20884-D836-40C1-BB4D-E5D4189218DB}.FREE|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC20884-D836-40C1-BB4D-E5D4189218DB}.FREE|Any CPU.Build.0 = Release|Any CPU
 		{AAC20884-D836-40C1-BB4D-E5D4189218DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAC20884-D836-40C1-BB4D-E5D4189218DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.FREE|Any CPU.ActiveCfg = Release|Any CPU
+		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.FREE|Any CPU.Build.0 = Release|Any CPU
+		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.FREE|Any CPU.Deploy.0 = Release|Any CPU
 		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9C0B779B-1D86-4DB5-906D-AF48C21380F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0B779B-1D86-4DB5-906D-AF48C21380F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0B779B-1D86-4DB5-906D-AF48C21380F4}.FREE|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0B779B-1D86-4DB5-906D-AF48C21380F4}.FREE|Any CPU.Build.0 = Release|Any CPU
+		{9C0B779B-1D86-4DB5-906D-AF48C21380F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0B779B-1D86-4DB5-906D-AF48C21380F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{673BD9E8-F0C3-4F45-96C2-259D896A02A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673BD9E8-F0C3-4F45-96C2-259D896A02A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673BD9E8-F0C3-4F45-96C2-259D896A02A6}.FREE|Any CPU.ActiveCfg = FREE|Any CPU
+		{673BD9E8-F0C3-4F45-96C2-259D896A02A6}.FREE|Any CPU.Build.0 = FREE|Any CPU
+		{673BD9E8-F0C3-4F45-96C2-259D896A02A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673BD9E8-F0C3-4F45-96C2-259D896A02A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.FREE|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.FREE|Any CPU.Build.0 = Release|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.FREE|Any CPU.Deploy.0 = Release|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{673BD9E8-F0C3-4F45-96C2-259D896A02A6} = {382D10EE-BC2F-4C79-A153-DB7F4388EF43}
+		{2E02CA47-1FFB-4F24-BB8C-6B7D62120A64} = {9FDEC90D-6497-4B3B-A4F1-7286886AB54A}
+		{C3F2C235-687F-42F2-9995-098B51DEFD7F} = {9FDEC90D-6497-4B3B-A4F1-7286886AB54A}
 	EndGlobalSection
 EndGlobal

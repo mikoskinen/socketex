@@ -3,6 +3,7 @@
 
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -174,7 +175,7 @@ namespace SocketEx
             InnerConnect(myEndPoint);
         }
 
-        private void InnerConnect(EndPoint myEndpoint)
+        protected void InnerConnect(EndPoint myEndpoint)
         {
             this.endpoint = myEndpoint;
 
@@ -185,11 +186,18 @@ namespace SocketEx
             {
                 Client.ConnectAsync(e);
                 WaitOne();
+
+                HandleConnectionReady();
             }
             catch (SocketException)
             {
                 Continue();
             }
+        }
+
+        protected virtual void HandleConnectionReady()
+        {
+                
         }
 
         public void EndConnect(IAsyncResult asyncResult)
@@ -211,7 +219,7 @@ namespace SocketEx
             autoResetEvent.WaitOne();
         }
 
-        public NetworkStream GetStream()
+        public virtual Stream GetStream()
         {
             return networkStream;
         }
