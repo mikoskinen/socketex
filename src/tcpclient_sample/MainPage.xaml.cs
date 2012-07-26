@@ -1,8 +1,5 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Text;
-using System.Threading;
 using System.Windows;
 using SocketEx;
 
@@ -24,29 +21,24 @@ namespace tcpclient_sample
             var stream = connection.GetStream();
 
             var reader = new StreamReader(stream);
+            var writer = new StreamWriter(stream);
+            var request = "GET / HTTP/1.1\r\nHost: " + serverAddress + "\r\nConnection: Close\r\n\r\n";
 
-            ThreadPool.QueueUserWorkItem(x =>
-                                             {
-                                                 var fullMessage = new StringBuilder();
+            writer.WriteLine(request);
+            writer.Flush();
 
-                                                 string message;
-                                                 while ((message = reader.ReadLine()) != null)
-                                                 {
-                                                     fullMessage.AppendLine(message);
-                                                 }
-                                              
-                                                 Dispatcher.BeginInvoke(() => Content.Text = fullMessage.ToString());
+            var fullMessage = new StringBuilder();
 
-                                             });
-
-            using (var writer = new StreamWriter(stream))
+            string message;
+            while ((message = reader.ReadLine()) != null)
             {
-                var request = "GET / HTTP/1.1\r\nHost: " + serverAddress + "\r\nConnection: Close\r\n\r\n";
+                if (string.IsNullOrWhiteSpace(message))
+                    break;
 
-                writer.WriteLine(request);
+                fullMessage.AppendLine(message);
             }
 
-            Thread.Sleep(1500);
+            Content.Text = fullMessage.ToString();
         }
 
         private TcpClient CreateConnection()

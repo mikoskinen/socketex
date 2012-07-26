@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
-using System.Threading;
 using System.Windows;
+using Org.BouncyCastle.Crypto.Tls;
 using SocketEx;
 
 namespace securetcpclient_sample
@@ -14,6 +14,7 @@ namespace securetcpclient_sample
         public MainPage()
         {
             InitializeComponent();
+            this.Address.Text = string.Format("{0}:{1}", serverAddress, serverPort);
         }
 
         private void UseSecureClientClick(object sender, RoutedEventArgs e)
@@ -22,29 +23,24 @@ namespace securetcpclient_sample
             var stream = connection.GetStream();
 
             var reader = new StreamReader(stream);
+            var writer = new StreamWriter(stream);
+            var request = "GET / HTTP/1.1\r\nHost: " + serverAddress + "\r\nConnection: Close\r\n\r\n";
 
-            ThreadPool.QueueUserWorkItem(x =>
+            writer.WriteLine(request);
+            writer.Flush();
+
+            var fullMessage = new StringBuilder();
+
+            string message;
+            while ((message = reader.ReadLine()) != null)
             {
-                var fullMessage = new StringBuilder();
+                if (string.IsNullOrWhiteSpace(message))
+                    break;
 
-                string message;
-                while ((message = reader.ReadLine()) != null)
-                {
-                    fullMessage.AppendLine(message);
-                }
-
-                Dispatcher.BeginInvoke(() => Content.Text = fullMessage.ToString());
-
-            });
-
-            using (var writer = new StreamWriter(stream))
-            {
-                var request = "GET / HTTP/1.1\r\nHost: " + serverAddress + "\r\nConnection: Close\r\n\r\n";
-
-                writer.WriteLine(request);
+                fullMessage.AppendLine(message);
             }
 
-            Thread.Sleep(1500);
+            ContentSSL.Text = fullMessage.ToString();
         }
 
         private SecureTcpClient CreateConnection()
